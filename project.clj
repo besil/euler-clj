@@ -5,6 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure    "1.11.1"]
                  [org.clojure/tools.logging "1.2.4"]
+                 [org.clojure/math.numeric-tower "0.0.5"]
                  [ch.qos.logback/logback-classic "1.4.11"]]
   :main ^:skip-aot euler-clj.core
   :target-path "target/%s"

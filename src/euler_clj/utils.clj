@@ -1,6 +1,6 @@
-(ns euler-clj.utils 
+(ns euler-clj.utils
   (:require
-    [clojure.tools.logging :as log]))
+   [clojure.tools.logging :as log]))
 
 (defn dividable?
   "Returns true if (mod a b) = 0"
