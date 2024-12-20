@@ -1,8 +1,8 @@
 (ns euler-clj.problems
   (:require
-   [clojure.tools.logging :as log]
    [clojure.math.numeric-tower :as math]
-   [euler-clj.utils :as utils]))
+   [clojure.tools.logging :as log]
+   [euler-clj.utils :as utils :refer [primes]]))
 
 (defn p1
   "Problem 1: Multiples of 3 and 5"
@@ -67,9 +67,14 @@
         square-sum (math/expt (reduce + (range 1 (+ n 1))) 2)
         difference (- square-sum sum-square)
         ]
-    (log/info "Sum square" sum-square)
-    (log/info "Square sum" square-sum)
-    (log/info "Difference" difference)
     difference
+    )
+  )
+
+(defn p7
+  "Problem 7: nth prime"
+  [& args]
+  (let [n (if (seq args) (first args) 10001)]
+    (last (take n (primes)))
     )
   )
