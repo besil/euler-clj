@@ -100,3 +100,9 @@
     (log/info "Triplet:" triplet)
     (log/info "Product" (reduce * triplet))
     (reduce * triplet)))
+
+(defn p10
+  "Problem 10: Summation of Primes"
+  [& args]
+  (let [n (if (seq args) (first args) 10)]
+    (reduce + (take-while (partial >= n) (primes)))))

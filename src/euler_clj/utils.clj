@@ -15,7 +15,7 @@
 (defn prime?
   "Check if a number is prime"
   [n]
-  (.isProbablePrime (java.math.BigInteger/valueOf n) 3))
+  (.isProbablePrime (java.math.BigInteger/valueOf n) 10))
 
 (defn primes
   "Generate an infinite sequence of prime numbers"
