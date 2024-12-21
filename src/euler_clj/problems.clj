@@ -74,9 +74,6 @@
   (let [n (if (seq args) (first args) 10001)]
     (last (take n (primes)))))
 
-
-
-
 (defn p8
   "Problem 8: Largest product in Series"
   [& args]
@@ -91,3 +88,15 @@
       max-pair (apply max-key second pairs)]
       (log/info "Max pair" max-pair)
       (second max-pair))))
+
+(defn p9
+  "Problem 9: Special Pythagorean Triplet"
+  []
+  (let [triplet (first (for [a (range 1 1001)
+                             b (range a 1001)
+                             :let [c (- 1000 (+ a b))]
+                             :when (and (< b c) (= (+ (* a a) (* b b)) (* c c)))]
+                         [a b c]))]
+    (log/info "Triplet:" triplet)
+    (log/info "Product" (reduce * triplet))
+    (reduce * triplet)))
