@@ -72,4 +72,16 @@
                            (map #(reduce * %)))]
          (apply max products))))
 
+(defn p9 []
+  (let [n 1000
+        sq (fn [a] (* a a))
+        pythagorean? (fn [a b c] (= (+ (sq a) (sq b)) (sq c)))]
+    (for [a (range 1 n)
+          b (range (+ a 1) n)
+          :let [c (- n a b)]
+          :when (pythagorean? a b c)]
+      (* a b c))))
+
+
+
 
