@@ -38,4 +38,13 @@
 (defn prime-factors [n]
   (map first (factorize n)))
 
+(defn gcd
+  ([a] a)
+  ([a b] (if (zero? b) a (recur b (mod a b))))
+  ([a b & more] (reduce gcd (gcd a b) more)))
+
+(defn lcm
+  ([a] a)
+  ([a b] (quot (*' a b) (gcd a b)))
+  ([a b & more] (reduce lcm (lcm a b) more)))
 
