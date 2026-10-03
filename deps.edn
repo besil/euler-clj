@@ -1,5 +1,7 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.12.5"}}
+ :deps {org.clojure/clojure {:mvn/version "1.12.5"}
+        org.clj-commons/humanize {:mvn/version "1.2"}
+        }
  :aliases
  {:run-m {:main-opts ["-m" "besil.euler-clj"]}
   :run-x {:ns-default besil.euler-clj

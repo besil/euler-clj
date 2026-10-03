@@ -1,7 +1,10 @@
 (ns besil.euler.problems
   (:gen-class)
   (:require
+   [clojure.math :as math]
+   [clj-commons.humanize :as humanize]
    [besil.euler.utils :as utils]
+   [clojure.pprint :as pprint]
    [besil.euler.sequences :as seqs]
    [clojure.string :as str]))
 
@@ -215,3 +218,34 @@
 
 (defn p15 []
   (println "Not yet implemented!"))
+
+(defn p16
+  ([] (p16 15))
+  ([exp]
+   (->> (.pow (biginteger 2) exp)
+        (biginteger)
+        (str)
+        (vec)
+        (map str)
+        (map #(Integer/parseInt %))
+        (reduce +))))
+
+(defn p17
+  ([] (p17 5))
+  ([n]
+   (let [count-letters (fn [n] (as-> n %
+                                 ;; (pprint/cl-format nil "~R" %) %
+                                 (humanize/numberword %)
+                                 (str/replace % #"-" "") %
+                                 (str/split % #" ")
+                                 (map count %)
+                                 (reduce + %)))]
+     (->> (range 1 (inc n))
+          (map count-letters)
+          (reduce +)
+          )
+     )
+   ))
+(p17 1000)
+
+(defn p18)
