@@ -1,9 +1,6 @@
 (ns besil.euler.utils)
 
 
-(defn fib
-  [] (map first (iterate (fn [[a b]] [b (+' a b)]) [0 1])))
-
 (defn prime? [n]
   (.isProbablePrime (biginteger n) 16))
 
@@ -47,4 +44,20 @@
   ([a] a)
   ([a b] (quot (*' a b) (gcd a b)))
   ([a b & more] (reduce lcm (lcm a b) more)))
+
+(defn divisors [n]
+  (let [factors (factorize n)
+        powers  (map (fn [[p e]] (map #(long (Math/pow p %)) (range (inc e))))
+                     factors)]
+    (->> (reduce (fn [acc ps]
+                   (for [a acc
+                         b ps]
+                     (* a b)))
+                 [1]
+                 powers)
+         sort)))
+
+
+
+
 
